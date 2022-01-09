@@ -1,0 +1,11 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env", // Apply @babel/preset-env to resolve .js file.
+      {
+        "useBuiltIns": "usage", // Dynamic parsing syntax according to compatibility.
+        "corejs": 3 // Use the CoreJS3 version to process compatibility for the low version of browsers.
+      }
+    ]
+  ]
+}
