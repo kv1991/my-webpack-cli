@@ -5,11 +5,14 @@
   "author": "Kaiwen Tian <kaiwen.tian@wishlife.com>",
   "license": "MIT",
   "scripts": {
-    "test": "webpack --config webpack.base.js --color --progress"
+    "start": "webpack serve --config webpack.dev.js --color --progress --hot",
+    "test": "webpack --config webpack.dev.js --color --progress"
   },
   "devDependencies": {
     "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.65.0",
-    "webpack-cli": "^4.9.1"
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.2",
+    "webpack-merge": "^5.8.0"
   }
 }
