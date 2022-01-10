@@ -1,3 +1,3 @@
-import './test.css';
+import '@/css/test.css';
 
 console.log('Test MiniCssExtractPlugin');

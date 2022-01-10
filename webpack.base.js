@@ -9,6 +9,12 @@ module.exports = {
     index: './src/index.js',
     test: './src/test.js'
   },
+  resolve: {
+    extensions: ['.js', '.jsx', '.vue', '.css', '.less', '.scss'],
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
