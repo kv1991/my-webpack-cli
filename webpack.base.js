@@ -29,5 +29,13 @@ module.exports = {
     new MiniCssExtractorPlugin({
       filename: '[name]-[contenthash].css'
     })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif|svg|jpeg)$/i,
+        type: 'asset/resource'
+      }
+    ]
+  }
 }
