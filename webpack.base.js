@@ -27,7 +27,7 @@ module.exports = {
       chunk: ['index', 'test']
     }),
     new MiniCssExtractorPlugin({
-      filename: '[name]-[contenthash].css'
+      filename: 'css/[name]-[contenthash].css'
     })
   ],
   module: {

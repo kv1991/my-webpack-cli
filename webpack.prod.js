@@ -7,7 +7,8 @@ module.exports = merge(base, {
   mode: 'production',
   devtool: 'source-map',
   output: {
-    filename: '[name]-[contenthash].bundle.js'
+    filename: 'js/[name]-[contenthash].bundle.js',
+    assetModuleFilename: 'media/[hash][ext][query]'
   },
   // optimization: {
   //   splitChunks: {
