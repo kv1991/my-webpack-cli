@@ -14,48 +14,14 @@ module.exports = {
     filename: '[name].bundle.js',
     publicPath: ''
   },
-  module: {
-    rules: [
-      {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader'
-        }
-      },
-      {
-        test: /\.css$/i,
-        use: [
-          { loader: MiniCssExtractorPlugin.loader },
-          { loader: 'css-loader' },
-          { loader: 'postcss-loader' }
-        ]
-      },
-      {
-        test: /\.less$/i,
-        use: [
-          { loader: MiniCssExtractorPlugin.loader },
-          { loader: 'css-loader' },
-          { loader: 'postcss-loader' },
-          { loader: 'less-loader' }
-        ],
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        use: [
-          { loader: MiniCssExtractorPlugin.loader },
-          { loader: 'css-loader' },
-          { loader: 'postcss-loader' },
-          { loader: 'sass-loader' }
-        ],
-      }
-    ]
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
       filename: 'index.html',
       chunk: ['index', 'test']
+    }),
+    new MiniCssExtractorPlugin({
+      filename: '[name]-[contenthash].css'
     })
   ]
 }
