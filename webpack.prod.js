@@ -5,7 +5,7 @@ const base = require('./webpack.base.js');
 
 module.exports = merge(base, {
   mode: 'production',
-  // devtool: 'source-map',
+  devtool: 'source-map',
   output: {
     filename: '[name]-[contenthash].bundle.js'
   },
