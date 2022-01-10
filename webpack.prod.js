@@ -1,5 +1,5 @@
 const { merge } = require('webpack-merge');
-const { CleanWebpackPlugin  } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const base = require('./webpack.base.js');
 
 module.exports = merge(base, {
@@ -7,6 +7,11 @@ module.exports = merge(base, {
   output: {
     filename: '[name]-[contenthash].bundle.js'
   },
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all',
+  //   },
+  // },
   plugins: [
     new CleanWebpackPlugin()
   ]
