@@ -1,11 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractorPlugin = require('mini-css-extract-plugin');
 
 console.log('__dirname: ', __dirname);
 
 module.exports = {
   entry: {
-    index: './src/index.js'
+    index: './src/index.js',
+    test: './src/test.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -24,7 +26,7 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          { loader: 'style-loader' },
+          { loader: MiniCssExtractorPlugin.loader },
           { loader: 'css-loader' },
           { loader: 'postcss-loader' }
         ]
@@ -32,7 +34,7 @@ module.exports = {
       {
         test: /\.less$/i,
         use: [
-          { loader: 'style-loader' },
+          { loader: MiniCssExtractorPlugin.loader },
           { loader: 'css-loader' },
           { loader: 'postcss-loader' },
           { loader: 'less-loader' }
@@ -41,7 +43,7 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          { loader: 'style-loader' },
+          { loader: MiniCssExtractorPlugin.loader },
           { loader: 'css-loader' },
           { loader: 'postcss-loader' },
           { loader: 'sass-loader' }
@@ -53,7 +55,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
       filename: 'index.html',
-      chunk: ['index']
+      chunk: ['index', 'test']
     })
   ]
 }
