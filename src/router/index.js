@@ -20,6 +20,7 @@ const routes = [
     name: 'Page1',
     component: () => import(
       /* webpackChunkName: 'page' */
+      /* webpackPrefetch: true */
       '@/views/Page1'
     )
   },
@@ -28,6 +29,7 @@ const routes = [
     name: 'Page2',
     component: () => import(
       /* webpackChunkName: 'page' */
+      /* webpackPrefetch: true */
       '@/views/Page2'
     )
   },
@@ -36,6 +38,7 @@ const routes = [
     name: 'Page3',
     component: () => import(
       /* webpackChunkName: 'page' */
+      /* webpackPrefetch: true */
       '@/views/Page3'
     )
   }
