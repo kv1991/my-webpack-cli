@@ -1,6 +1,7 @@
 const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractorPlugin = require('mini-css-extract-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const base = require('./webpack.base.js');
 
 module.exports = merge(base, {
@@ -49,6 +50,12 @@ module.exports = merge(base, {
     new CleanWebpackPlugin(),
     new MiniCssExtractorPlugin({
       filename: '[name]-[contenthash].css'
+    }),
+    new CompressionWebpackPlugin({
+      algorithm: 'gzip',
+      test: /\.js$|\.html$|\.css$/,
+      threshold: 10240,
+      minRatio: 0.8
     })
   ]
 });
