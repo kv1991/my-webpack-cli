@@ -2,6 +2,8 @@ const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractorPlugin = require('mini-css-extract-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const HappyPack = require('happypack');
+
 const base = require('./webpack.base.js');
 
 module.exports = merge(base, {
@@ -56,6 +58,9 @@ module.exports = merge(base, {
       test: /\.js$|\.html$|\.css$/,
       threshold: 10240,
       minRatio: 0.8
+    }),
+    new HappyPack({
+      loaders: ['babel-loader?presets[]=es2015']
     })
   ]
 });
