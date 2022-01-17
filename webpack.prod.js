@@ -3,6 +3,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractorPlugin = require('mini-css-extract-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const HappyPack = require('happypack');
+const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
+
+const RemoveConsoleWebpackPlugin = require('./src/custom-webpack-plugins/remove-consoles-webpack-plugin');
 
 const base = require('./webpack.base.js');
 
@@ -61,6 +64,20 @@ module.exports = merge(base, {
     }),
     new HappyPack({
       loaders: ['babel-loader?presets[]=es2015']
-    })
+    }),
+    new ImageminWebpWebpackPlugin({
+      config: [
+        {
+          test: /\.(jpe?g|png)$/,
+          options: {
+            quality: 60,
+          }
+        }
+      ],
+      overrideExtension: false,
+      detailedLogs: true,
+      strict: false
+    }),
+    new RemoveConsoleWebpackPlugin()
   ]
 });

@@ -1,6 +1,7 @@
 <template>
   <div>
     Home
+    <img src="../imgs/invite_bg.png" alt="">
   </div>
 </template>
 
