@@ -16,11 +16,42 @@ module.exports = merge(base, {
     filename: 'js/[name]-[contenthash].bundle.js',
     assetModuleFilename: 'media/[hash][ext][query]'
   },
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all',
-  //   },
+  // externals: {
+  //   Vue: 'vue',
+  //   VueRouter: 'vue-router',
+  //   // $router: 'vue-router'
   // },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          chunks: 'initial',
+          name(module, chunks, cacheGroupKey) {
+            const moduleFileName = module
+              .identifier()
+              .split('/')
+              .reduceRight((item) => item);
+            const allChunksNames = chunks.map((item) => item.name).join('~');
+            return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
+          },
+          minChunks: 2
+        },
+        reactBase: {
+          name: 'react.base',
+          chunks: 'initial',
+          test: module => /react/.test(module.context),
+          priority: 10
+        },
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
+          priority: 20
+        }
+      }
+    },
+  },
   module: {
     rules: [
       {
