@@ -16,11 +16,11 @@ module.exports = merge(base, {
     filename: 'js/[name]-[contenthash].bundle.js',
     assetModuleFilename: 'media/[hash][ext][query]'
   },
-  // externals: {
-  //   Vue: 'vue',
-  //   VueRouter: 'vue-router',
-  //   // $router: 'vue-router'
-  // },
+  externals: {
+    Vue: 'vue',
+    VueRouter: 'vue-router',
+    // $router: 'vue-router'
+  },
   optimization: {
     splitChunks: {
       cacheGroups: {
